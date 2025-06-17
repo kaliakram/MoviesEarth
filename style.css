@@ -1,0 +1,74 @@
+*{
+    font-family: "Bebas Neue";
+    color: white;
+}
+body{
+    background-color: black;
+    padding: 0px;
+}
+#movies{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+#logo{
+    width: 17vh;
+}
+header{
+    margin: 0px;
+    display: flex;
+    border-bottom: 1px solid white;
+    flex-wrap: wrap;
+    margin: 0px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(68, 22, 111);
+}
+#navbar{
+    list-style: none;
+    display: flex;
+    gap: 2vh;
+}
+a{
+    text-decoration: none;
+}
+#explorerwrapper{
+
+}
+.movie{
+    border: 2px solid rgba(255, 255, 255, 0.268);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    margin: 1vh;
+    width: 20vh;
+    height: 35vh;
+    background-color: rgba(137, 43, 226, 0.505);
+}
+.movie:hover{
+    animation-name: animation;
+    animation-duration: 200ms;
+    animation-fill-mode:forwards;
+}
+.movie>img{
+    width: 10vh;
+    margin: auto;
+}
+.movie>p{
+    text-align: center;
+    font-size: 110%;
+    color: white;
+}
+h1,h2{
+    text-align: center;
+
+}
+@keyframes animation{
+    0%{
+        background-color: rgb(255, 255, 255);
+    }
+    100%{
+        background-color: rgba(80, 27, 130, 0.505);
+    }
+}
