@@ -34,6 +34,8 @@ a{
     text-decoration: none;
 }
 #explorerwrapper{
+    border: 2px solid rgba(255, 227, 255, 0.405);
+    border-radius: 4px;
 
 }
 .movie{

@@ -11,7 +11,6 @@ try {
 	const response = await fetch(url, options);
 	const result = await response.json();
 	const bigClass=document.getElementById("movies");
-	document.body.appendChild(bigClass);
 	result.data.movies.forEach(element => {
 		let newElement=document.createElement("div");
 		let newTitle=document.createElement("p");
