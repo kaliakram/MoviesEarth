@@ -7,7 +7,7 @@
     color: white;
 }
 body{
-    background-color: black;
+    background:linear-gradient(130deg,black,rgb(62, 0, 62));
     padding: 0px;
     margin: 0px;
 }
@@ -28,7 +28,7 @@ header{
     margin: 0px;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(68, 22, 111);
+    background:linear-gradient(to right,black,rgb(62, 0, 62))
 }
 #navbar{
     list-style: none;
@@ -51,7 +51,7 @@ a{
     margin-bottom: 2vh;
 }
 #explorerwrapper{
-    padding:2vh 2vh;
+    padding-top: 2vh;
     margin-bottom: 0vh;
 
 }
@@ -70,22 +70,17 @@ a{
 }
 .movie{
     border: 2px solid rgba(255, 255, 255, 0.411);
-    border-radius: 3px;
+    border-radius: 9px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 1vh;
     width: 20vh;
     height: 35vh;
     background-color: rgba(137, 43, 226, 0.505);
 }
 .movie:hover{
-    animation-name: animation;
-    animation-duration: 200ms;
-    animation-fill-mode:forwards;
-}
-.movie>img{
-    width: 10vh;
-    margin: auto;
+
 }
 .movie>p{
     text-align: center;
