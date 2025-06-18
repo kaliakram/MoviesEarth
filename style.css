@@ -2,6 +2,10 @@
     font-family: "best_hero";
     src: url("fonts/herottf.ttf");
 }
+@font-face {
+    font-family: "Bebas Neue";
+    src: url("fonts/BebasNeue.otf");
+}
 *{
     font-family: "Bebas Neue";
     color: white;
@@ -60,8 +64,6 @@ a{
     border-radius: 3px;
     display: flex;
     flex-direction: column;
-    animation-name: loadingMovies;
-    animation-duration: 1200ms;
     animation-iteration-count: infinite;
     margin: 1vh;
     width: 20vh;
@@ -69,6 +71,8 @@ a{
 
 }
 .movie{
+    animation-name: slowShow;
+    animation-duration: 1200ms;
     border: 2px solid rgba(255, 255, 255, 0.411);
     border-radius: 9px;
     display: flex;
@@ -113,6 +117,19 @@ h1{
     }
     100%{
         background-color: black;
+
+    }
+}
+@keyframes slowShow{
+    0%{
+        opacity: 0;
+
+    }
+    50%{
+        translate: -1vh;
+    }
+    100%{
+        opacity:1;
 
     }
 }
