@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "best_hero";
+    src: url("fonts/herottf.ttf");
+}
 *{
     font-family: "Bebas Neue";
     color: white;
@@ -38,15 +42,17 @@ a{
     font-size: 2.2vh;
 }
 #hero{
-    height: 40vh;
+    height: 50vh;
     display: flex;
     align-items: center;
-    background-color:darkorchid
+    background-image: url(imgs/herobackground.png);
+    background-position:bottom;
+    border-bottom: 0.5px solid white;
+    margin-bottom: 2vh;
 }
 #explorerwrapper{
     padding:2vh 2vh;
-    border: 2px solid rgba(255, 227, 255, 0.405);
-    border-radius: 4px;
+    margin-bottom: 0vh;
 
 }
 .moviebefore{
@@ -63,7 +69,7 @@ a{
 
 }
 .movie{
-    border: 2px solid rgba(255, 255, 255, 0.268);
+    border: 2px solid rgba(255, 255, 255, 0.411);
     border-radius: 3px;
     display: flex;
     flex-direction: column;
@@ -89,7 +95,9 @@ a{
 h1,h2{
     text-align: center;
     margin: auto;
-
+}
+h1{
+    font-family: "best_hero";
 }
 @keyframes animation{
     0%{
