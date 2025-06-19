@@ -1,32 +1,34 @@
 async function getPost() {
-const url = 'https://movie-database-api1.p.rapidapi.com/list_movies.json?limit=20&page=1&quality=all&genre=all&minimum_rating=0&query_term=0&sort_by=date_added&order_by=desc&with_rt_ratings=false';
 const options = {
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': 'ed4951a5d9mshebfa01c7c5d481ep1fb982jsn6857bfa2b2a7',
-		'x-rapidapi-host': 'movie-database-api1.p.rapidapi.com'
-	}
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNTllZTZiMjJkYjQ5MDc3NTgyNzY0ZDM1ZjhjYjQ2YSIsIm5iZiI6MTc1MDI4NTg1Ny40MDcsInN1YiI6IjY4NTMzZTIxZWUzZmM4ZTg1ZjBjZjA0OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Eacu25qDg7V_HmQpT0QZU6YgbObnuAXQnY-n-aKcikE'
+  }
 };
-try {
-	const response = await fetch(url, options);
-	const result = await response.json();
+
+fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options)
+  .then(res => res.json())
+  .then(res => {
 	const bigClass=document.getElementById("movies");
 	bigClass.innerHTML="";
-	result.data.movies.forEach(element => {
+	res.results.forEach(element => {
 		let newElement=document.createElement("div");
 		let newTitle=document.createElement("p");
+		let newOverlay=document.createElement("div");
+		newOverlay.className="movieOverlay";
+		let newImagePath=`https://image.tmdb.org/t/p/original/${element.poster_path}`;
 		newElement.className="movie";
-		newTitle.innerHTML=element.title_long;
-		newElement.style.backgroundImage=`url("${element.large_cover_image}")`;
+		newTitle.innerHTML=element.original_title;
+		newElement.style.backgroundImage=`url("${newImagePath}")`;
 		newElement.style.backgroundSize="cover";
 		newElement.appendChild(newTitle);
+		newElement.appendChild(newOverlay);
 		bigClass.appendChild(newElement);
-		
-	});
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
+});
+console.log(JSON.stringify(res));
+  })
+  .catch(err => console.error(err));
 }
 
 document.addEventListener("DOMContentLoaded",()=>{

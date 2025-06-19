@@ -61,6 +61,9 @@ a{
 }
 .moviebefore{
     border: 2px solid rgba(255, 255, 255, 0.112);
+    animation-name: loadingMovies;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
@@ -72,6 +75,8 @@ a{
 }
 .movie{
     animation-name: slowShow;
+    position: relative;
+    position:relative;
     animation-duration: 1200ms;
     border: 2px solid rgba(255, 255, 255, 0.411);
     border-radius: 9px;
@@ -112,7 +117,7 @@ h1{
 
     }
     50%{
-        background-color: rgb(26, 26, 26);
+        background-color: rgb(27, 0, 39);
 
     }
     100%{
