@@ -12,7 +12,8 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
   .then(res => {
 	const bigClass=document.getElementById("movies");
 	bigClass.innerHTML="";
-	res.results.forEach(element => {
+	for(i=0;i<18;i++){
+		let element=res.results[i];
 		let newElement=document.createElement("div");
 		let newTitle=document.createElement("p");
 		let newOverlay=document.createElement("div");
@@ -25,7 +26,7 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
 		newElement.appendChild(newTitle);
 		newElement.appendChild(newOverlay);
 		bigClass.appendChild(newElement);
-});
+};
 console.log(JSON.stringify(res));
   })
   .catch(err => console.error(err));
