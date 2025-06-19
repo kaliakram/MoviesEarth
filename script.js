@@ -34,5 +34,6 @@ console.log(JSON.stringify(res));
 
 document.addEventListener("DOMContentLoaded",()=>{
     getPost();
+	
 
 })

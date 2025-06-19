@@ -41,6 +41,9 @@ header{
     align-self: center;
     margin-right:3.75vh;
 }
+li:nth-of-type(1){
+    border-bottom: 1px solid white;
+}
 a{
     text-decoration: none;
     font-size: 2.2vh;
@@ -95,7 +98,7 @@ a{
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.504);
-    backdrop-filter: blur(1px);
+    backdrop-filter: blur(0.1px);
     z-index: 1;
 }
 .movie:hover{
