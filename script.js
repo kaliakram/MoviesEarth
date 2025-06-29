@@ -1,4 +1,4 @@
-async function getPost() {
+async function getMovies() {
 const options = {
   method: 'GET',
   headers: {
@@ -37,7 +37,7 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
-    getPost();
+    getMovies();
 	let movies=document.getElementById("movies");
 	let popover_container=document.getElementById("popover-container");
 	let popover=document.getElementById("popover");
