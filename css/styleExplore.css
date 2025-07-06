@@ -1,10 +1,10 @@
 @font-face {
     font-family: "best_hero";
-    src: url("fonts/herottf.ttf");
+    src: url("../fonts/herottf.ttf");
 }
 @font-face {
     font-family: "Bebas Neue";
-    src: url("fonts/BebasNeue.otf");
+    src: url("../fonts/BebasNeue.otf");
 }
 *{
     font-family: "Bebas Neue";
@@ -83,12 +83,6 @@ body{
     transition: all 0.2s;
     
 }
-#movies{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-}
 #logo{
     width: 17vh;
 }
@@ -110,21 +104,20 @@ header{
     align-self: center;
     margin-right:3.75vh;
 }
-li:nth-of-type(1){
+li:nth-of-type(2){
     border-bottom: 1px solid white;
 }
 a{
     text-decoration: none;
     font-size: 2.2vh;
 }
-#hero{
-    height: 50vh;
+#movies{
     display: flex;
-    align-items: center;
-    background-image: url(imgs/herobackground.png);
-    background-position:bottom;
-    border-bottom: 0.5px solid white;
-    margin-bottom: 2vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding-right:2.7em ;
+    padding-left:2.7em ;
 }
 #explorerwrapper{
     padding-top: 2vh;
@@ -188,45 +181,8 @@ h1,h2{
     text-align: center;
     margin: auto;
 }
-h1{
-    font-family: "best_hero";
-}
-#button{
-    display: flex;
-    justify-content: center;
-}
-#exploreMore{
-    height: 10vh;
-    width: 40vh;
-    background:linear-gradient(130deg,black,rgb(62, 0, 62)) ;
-    border-radius: 4vh;
-    font-size: 3vh;
-    margin-bottom: 2vh;
-    cursor: pointer;
-}
-#exploreMore:hover{
-    transition: all 0.2s ease-in;
-    scale: 1.05;
-}
-
-footer{
-    margin-top: 2vh;
-    display: flex;
-    border-top: 1px solid white;
-    flex-wrap: wrap;
-    margin: 0px;
-    justify-content: space-around;
-    align-items: center;
-    background:linear-gradient(to right,black,rgb(62, 0, 62))
-
-}
-@keyframes animation{
-    0%{
-        background-color: rgb(255, 255, 255);
-    }
-    100%{
-        background-color: rgba(80, 27, 130, 0.505);
-    }
+h2{
+    font-size: 5vh;
 }
 @keyframes loadingMovies{
     0%{
@@ -234,12 +190,20 @@ footer{
 
     }
     50%{
-        background-color: rgb(27, 0, 39);
+        background-color: rgb(16, 0, 23);
 
     }
     100%{
         background-color: black;
 
+    }
+}
+@keyframes animation{
+    0%{
+        background-color: rgb(255, 255, 255);
+    }
+    100%{
+        background-color: rgba(80, 27, 130, 0.505);
     }
 }
 @keyframes slowShow{
