@@ -10,6 +10,9 @@
     font-family: "Bebas Neue";
     color: white;
 }
+html{
+    background-color: rgb(12, 0, 12);
+}
 body{
     background:linear-gradient(130deg,black,rgb(62, 0, 62));
     padding: 0px;
@@ -98,7 +101,7 @@ header{
     margin: 0px;
     justify-content: space-around;
     align-items: center;
-    background:linear-gradient(to right,black,rgb(62, 0, 62))
+    background:linear-gradient(to right,black,rgb(62, 0, 62));
 }
 #navbar{
     list-style: none;

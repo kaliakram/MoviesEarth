@@ -35,9 +35,24 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
   })
   .catch(err => console.error(err));
 }
+function type(string,element){
+	let speed=50;
+	let index=0;
+	function writechar(){
+		if(index<string.length){
+		element.textContent+=string[index];
+		index++;
+		setTimeout(writechar,speed);
+	}
+	}
+	writechar();
+}
 
 document.addEventListener("DOMContentLoaded",()=>{
     getMovies();
+	let animateString='Welcome to MoviesEarth- Your Best Source For Exploring Movies !';
+	let element=document.querySelector("h1");
+	type(animateString,element);
 	let movies=document.getElementById("movies");
 	let popover_container=document.getElementById("popover-container");
 	let popover=document.getElementById("popover");
