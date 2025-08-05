@@ -1,5 +1,5 @@
         async function getMovies() {
-fetch("{{url_for('get_movies',pages=page)}}")
+fetch(url)
   .then(res => res.json())
   .then(res => {
     const forbidden=['Pleasure','Des jours plus belles que la nuit','Intimacy','After'];

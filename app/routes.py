@@ -80,7 +80,6 @@ def register_routes(app):
         ]
         )
         query=completion.choices[0].message.content
-        print(query)
         api_key_tmdb=os.getenv('TMDB_KEY')
         url2= f'https://api.themoviedb.org/3/search/movie?&query={query}'
         headers={

@@ -1,3 +1,4 @@
+let stop=false;
 function typer(){
     let text="AI Recommendation";
     let element=document.querySelector("h1");
@@ -11,6 +12,31 @@ function typer(){
         }
     }
     writechar();
+}
+function waitingtyper(){
+    let para=document.querySelector("#popover-content > p");
+    let i=0;
+    let speed=350;
+    function type(){
+        if(para.textContent.length==0){
+            para.textContent="ai is recommending for you";
+        }
+        if(stop){ 
+            para.textContent=""
+            return;}
+        if(i<5){
+            para.textContent+='.';
+            i++;
+            setTimeout(type,speed);
+        }
+        else{
+            i=0;
+            para.textContent="ai is recommending for you";
+            setTimeout(type,speed);
+        }
+    }
+        type();
+    
 }
 document.addEventListener("DOMContentLoaded",()=>{
     typer();
@@ -56,6 +82,8 @@ document.addEventListener("DOMContentLoaded",()=>{
         else{
                     popovercont.style.display="block";
         document.getElementById("loadingCircle").style.display='block';
+        stop=false;
+        waitingtyper();
         let oldcontent=document.getElementById("newcontent");
         if(oldcontent){
                 oldcontent.remove();
@@ -73,6 +101,8 @@ document.addEventListener("DOMContentLoaded",()=>{
         fetch(url,options)
         .then(res=>res.json())
         .then(res=>{
+            stop=true;
+            document.querySelector("#popover-content > p").textContent="";
             document.getElementById("loadingCircle").style.display='none';
             let newcontent=document.createElement("div");
             newcontent.id="newcontent";
