@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleExplore.css">
-    <link rel="icon" href="imgs/icon.png">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styleExplore.css')}}">
+    <link rel="icon" href="{{url_for('static',filename='imgs/icon.png')}}">
     <title>MoviesEarth - Explore</title>
 </head>
 <body>
         <header>
-        <a href="index.htm"> <img src="imgs/logo.png" alt="Logo" id="logo"></a>
+        <a href="{{url_for('home')}}"> <img src="{{url_for('static',filename='imgs/logo.png')}}" alt="Logo" id="logo"></a>
         <ul id="navbar">
-            <li> <a href="index.htm">Home</a></li>
-            <li><a href="explore.html">Explore</a></li>
-            <li><a href="airecomm.html">AI Recommendation</a></li>
-            <li><a href="aboutUs.html">About Us</a></li>
+            <li> <a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('explore_movies',page=1)}}">Explore</a></li>
+            <li><a href="{{url_for('ai_movie_recommendation')}}">AI Recommendation</a></li>
+            <li><a href="{{url_for('about')}}">About Us</a></li>
         </ul>
 
     </header>
     <div id="popover-container">
         <div id="popover">
             <div id="popover-content">
-                <img src="imgs/exit.png" alt="exit" id="exit">
+                <img src="{{url_for('static',filename='imgs/exit.png')}}" alt="exit" id="exit">
                 <div id="loadingCircle">
                 </div>
                 <div id="newcontent">
@@ -36,36 +36,114 @@
         <h2></h2>
         <hr width="70%">
          <div id="movies">
+            {% for i in range(22) %}
             <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-            <div class="moviebefore"></div>
-
+            {% endfor %}
+    </div>
+    <div id="next-previous">
+        {% if page>1 %}
+        <div>
+            <a href="{{url_for('explore_movies',page=page-1)}}" >
+        <img src="{{url_for('static',filename='imgs/left-arrow.png')}}" alt="left-arrow" id="previous"\>
+            </a>
+        </div>
+        {% endif %}
+            <a href="{{url_for('explore_movies',page=1)}}">
+                <div>
+                <p>1</p>
+                </div>
+            </a>
+                <div>
+        <a href="{{url_for('explore_movies',page=500)}}">
+                <p>500</p>
+            </a>
+        </div>
+        {% if page<500 %}
+        <div>
+            <a href="{{url_for('explore_movies',page=page+1)}}">
+        <img src="{{url_for('static',filename='imgs/right-arrow.png')}}" alt="right-arrow" id="next" \>
+            </a>
+        </div>
+        {% endif %}
     </div>
     </div>
        <footer>
     <p>hello</p>
    </footer>
-    <script src="js/scriptExplore.js">
+    <script>
+        async function getMovies() {
+fetch("{{url_for('get_movies',pages=page)}}")
+  .then(res => res.json())
+  .then(res => {
+    const forbidden=['Pleasure','Des jours plus belles que la nuit','Intimacy','After'];
+	const bigClass=document.getElementById("movies");
+	bigClass.innerHTML="";
+	for(i=0;i<20;i++){
+		let element=res.results[i];
+		let newElement=document.createElement("div");
+		let newTitle=document.createElement("p");
+		let newOverlay=document.createElement("div");
+		newOverlay.className="movieOverlay";
+		let newImagePath=`https://image.tmdb.org/t/p/original/${element.poster_path}`;
+		newElement.className="movie";
+		newElement.imagePath=`https://image.tmdb.org/t/p/original/${element.poster_path}`;
+		newElement.overview=element.overview;
+		newTitle.innerHTML=element.original_title;
+        if(!(forbidden.includes(element.original_title))){
+		newElement.style.backgroundImage=`url("${newImagePath}")`;
+		newElement.style.backgroundSize="cover";
+		newElement.appendChild(newTitle);
+		newElement.appendChild(newOverlay);
+		bigClass.appendChild(newElement);
+        }
 
+};
+  })
+  .catch(err => console.error(err));
+}
+function type(string,element){
+    let speed=50;
+    let i=0;
+    function writechar(){
+        if(i<string.length){
+            element.textContent+=string[i];
+            i++;
+            setTimeout(writechar,speed);
+        }
+    }
+    writechar();
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+    getMovies();
+    let string='Explore Movies';
+    let element=document.querySelector("h2");
+    type(string,element);
+	let movies=document.getElementById("movies");
+	let popover_container=document.getElementById("popover-container");
+	let popover=document.getElementById("popover");
+	let popover_content=document.getElementById("popover-content");
+	let exit=document.getElementById("exit");
+	movies.addEventListener("click",(event)=>{
+		let movie=event.target.closest(".movie");
+		console.log(movie);
+		if(!movie || !movies.contains(movie)) return;
+			popover_container.style.display="block";
+			document.getElementById("title").innerHTML=movie.children[0].innerHTML;
+			document.querySelector("#overview").innerHTML="";
+			let overview=document.getElementById("overview");
+			document.getElementById("poster").src=movie.imagePath;
+			document.getElementById("loadingCircle").style.display="none";
+			overview.innerHTML=movie.overview;
+			})
+
+	exit.addEventListener("click",()=>{
+			let loading=document.getElementById("loadingCircle");
+			popover_content.style.display="block";
+			popover_container.style.display="none";
+	})
+
+})
     </script>
 </body>
 </html>

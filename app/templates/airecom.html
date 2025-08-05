@@ -3,10 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleAi.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styleAi.css')}}">
+    <link rel="icon" href="{{url_for('static',filename='imgs/icon.png')}}">
     <title>MoviesEarth - Ai Movie Recommendation</title>
+    <style>
+        #action{
+    background-image: url("{{url_for('static',filename='imgs/genres/action.jpg')}}");
+    background-size: cover;
+}
+        #adventure{
+    background-image: url("{{url_for('static',filename='imgs/genres/adventure.jpg')}}");
+    background-size: cover;
+}
+        #animation{
+    background-image: url("{{url_for('static',filename='imgs/genres/animation.jpg')}}");
+    background-size: cover;
+}
+        #comedy{
+    background-image: url("{{url_for('static',filename='imgs/genres/comedy.jpg')}}");
+    background-size: cover;
+}
+        #crime{
+    background-image: url("{{url_for('static',filename='imgs/genres/crime.avif')}}");
+    background-size: cover;
+}
+        #documentary{
+    background-image: url("{{url_for('static',filename='imgs/genres/documentary.png')}}");
+    background-size: cover;
+}
+        #drama{
+    background-image: url("{{url_for('static',filename='imgs/genres/drama.jpg')}}");
+    background-size: cover;
+}
+        #family{
+    background-image: url("{{url_for('static',filename='imgs/genres/family.jpg')}}");
+    background-size: cover;
+}
+        #fantasy{
+    background-image: url("{{url_for('static',filename='imgs/genres/fantasy.jpg')}}");
+    background-size: cover;
+}
+        #history{
+    background-image: url("{{url_for('static',filename='imgs/genres/history.jpg')}}");
+    background-size: cover;
+}
+        #horror{
+    background-image: url("{{url_for('static',filename='imgs/genres/horror.jpg')}}");
+    background-size: cover;
+}
+        #music{
+    background-image: url("{{url_for('static',filename='imgs/genres/music.jpg')}}");
+    background-size: cover;
+}
+        #mystery{
+    background-image: url("{{url_for('static',filename='imgs/genres/mystery.jpg')}}");
+    background-size: cover;
+}
+        #romance{
+    background-image: url("{{url_for('static',filename='imgs/genres/romance.avif')}}");
+    background-size: cover;
+}
+        #sciencefiction{
+    background-image: url("{{url_for('static',filename='imgs/genres/sciencefiction.jpg')}}");
+    background-size: cover;
+}
+        #thriller{
+    background-image: url("{{url_for('static',filename='imgs/genres/thriller.jpg')}}");
+    background-size: cover;
+}
+        #tvmovie{
+    background-image: url("{{url_for('static',filename='imgs/genres/tvmovie.avif')}}");
+    background-size: cover;
+}
+        #war{
+    background-image: url("{{url_for('static',filename='imgs/genres/war.jpg')}}");
+    background-size: cover;
+}
+        #western{
+    background-image: url("{{url_for('static',filename='imgs/genres/western.webp')}}");
+    background-size: cover;
+}
+        #avengers{
+            background-image: url("{{url_for('static',filename='imgs/movies/avengers.jpg')}}");
+            background-size: cover;
+            background-position: center;
+        }
+        #forrest{
+            background-image: url("{{url_for('static',filename='imgs/movies/forrestgump.jpg')}}");
+            background-size: cover;
+            background-position: center;
+        }
+        #inception{
+            background-image: url("{{url_for('static',filename='imgs/movies/inception.jpg')}}");
+            background-size: cover;
+            background-position: center;
+        }
+        #inter{
+            background-image: url("{{url_for('static',filename='imgs/movies/interstellar.jpg')}}");
+            background-size: cover;
+            background-position: center;
+        }
+        #pulp{
+            background-image: url("{{url_for('static',filename='imgs/movies/pulpfiction.jpg')}}");
+            background-size: cover;
+            background-position: center;
+        }
+        #darkk{
+            background-image: url("{{url_for('static',filename='imgs/movies/thedarkknight.jpg')}}");
+            background-size: cover;
+            background-position: center;
+        }
+        #godf{
+            background-image: url("{{url_for('static',filename='imgs/movies/thegodfather.jpg')}}");
+            background-size: cover;
+            background-position: center;
+        }
+        #matrix{
+            background-image: url("{{url_for('static',filename='imgs/movies/thematrix.jpg')}}");
+            background-size: cover;
+            background-position: center;
+        }
+        #shaw{
+            background-image: url("{{url_for('static',filename='imgs/movies/theshawshankredemption.jpg')}}");
+            background-size: cover;
+            background-position: center;
+        }
+        #titanic{
+            background-image: url("{{url_for('static',filename='imgs/movies/titanic.jpg')}}");
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    <script>
+        let url="{{url_for('get_recommendation')}}";
+    </script>
 </head>
 <body>
-    
+      <header>
+        <a href="{{url_for('home')}}"> <img src="{{url_for('static',filename='imgs/logo.png')}}" alt="Logo" id="logo"></a>
+        <ul id="navbar">
+            <li> <a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('explore_movies',page=1)}}">Explore</a></li>
+            <li><a href="{{url_for('ai_movie_recommendation')}}">AI Recommendation</a></li>
+            <li><a href="{{url_for('about')}}">About Us</a></li>
+        </ul>
+
+    </header>
+    <div id="popover-container">
+        <div id="popover">
+            <div id="popover-content">
+                <img src="{{url_for('static',filename='imgs/exit.png')}}" alt="exit" id="exit">
+                <div id="loadingCircle">
+                </div>
+                <p>ai is recommending for you</p>
+            </div>
+        </div>
+    </div>
+    <h1></h1>
+    <hr width="70%">
+    <div id="recom-wrapper">
+        <h2>Choose Your Preffered Categories:</h2>
+        <div id="chose-from">
+            <div class="genre" id="action">
+                <div class="genreOverlay"></div>
+                <p>Action</p>
+            </div>
+            <div class="genre" id="adventure">
+                <div class="genreOverlay"></div>
+                <p>Adventure</p>
+            </div>
+            <div class="genre" id="animation">
+                <div class="genreOverlay"></div>
+                <p>Animation</p>
+            </div>
+            <div class="genre" id="comedy">
+                <div class="genreOverlay"></div>
+                <p>Comedy</p>
+            </div>
+            <div class="genre" id="crime">
+                <div class="genreOverlay"></div>
+                <p>Crime</p>
+            </div>
+            <div class="genre" id="documentary">
+                <div class="genreOverlay"></div>
+                <p>Documentary</p>
+            </div>
+            <div class="genre" id="drama">
+                <div class="genreOverlay"></div>
+                <p>Drama</p>
+            </div>
+            <div class="genre" id="family">
+                <div class="genreOverlay"></div>
+                <p>Family</p>
+            </div>
+            <div class="genre" id="fantasy">
+                <div class="genreOverlay"></div>
+                <p>Fantasy</p>
+            </div>
+            <div class="genre" id="history">
+                <div class="genreOverlay"></div>
+                <p>History</p>
+            </div>
+            <div class="genre" id="horror">
+                <div class="genreOverlay"></div>
+                <p>Horror</p>
+            </div>
+            <div class="genre" id="music">
+                <div class="genreOverlay"></div>
+                <p>Music</p>
+            </div>
+            <div class="genre" id="mystery">
+                <div class="genreOverlay"></div>
+                <p>Mystery</p>
+            </div>
+            <div class="genre" id="romance">
+                <div class="genreOverlay" ></div>
+                <p>Romance</p>
+            </div>
+            <div class="genre" id="sciencefiction">
+                <div class="genreOverlay"></div>
+                <p>Science Fiction</p>
+            </div>
+            <div class="genre" id="thriller">
+                <div class="genreOverlay"></div>
+                <p>Thriller</p>
+            </div>
+            <div class="genre" id="tvmovie">
+                <div class="genreOverlay"></div>
+                <p>Tv Movie</p>
+            </div>
+            <div class="genre" id="war">
+                <div class="genreOverlay"></div>
+                <p>War</p>
+            </div>
+            <div class="genre" id="western">
+                <div class="genreOverlay"></div>
+                <p>Western</p>
+            </div>
+        </div>
+        <h2>Choose Some Of Your Preffered Movies:</h2>
+<div id="chooose">
+    <div class="movieSug" id="avengers">
+                        <div class="suggOverlay" ></div>
+                <p>Avengers</p>
+    </div>
+    <div class="movieSug" id="forrest">
+                        <div class="suggOverlay" ></div>
+                <p>Forrest Gump</p>
+    </div>
+    <div class="movieSug" id="inception">
+                        <div class="suggOverlay" ></div>
+                <p>Inception</p>
+    </div>
+    <div class="movieSug" id="inter">
+                        <div class="suggOverlay" ></div>
+                <p>Interstellar</p>
+    </div>
+    <div class="movieSug" id="pulp">
+                        <div class="suggOverlay" ></div>
+                <p>Pulp Fiction</p>
+    </div>
+    <div class="movieSug" id="darkk">
+                        <div class="suggOverlay" ></div>
+                <p>The Dark Knight</p>
+    </div>
+    <div class="movieSug" id="godf">
+                        <div class="suggOverlay" ></div>
+                <p>The Godfather</p>
+    </div>
+    <div class="movieSug" id="matrix">
+                        <div class="suggOverlay" ></div>
+                <p>The Matrix</p>
+    </div>
+    <div class="movieSug" id="shaw">
+                        <div class="suggOverlay" ></div>
+                <p>The Shawshank Redemption</p>
+    </div>
+    <div class="movieSug" id="titanic">
+                        <div class="suggOverlay" ></div>
+                <p>Titanic</p>
+    </div>
+</div>
+    </div>
+    <div id="buttonWrapper">
+            <button id="button">Let Ai Recommend For U</button>
+    </div>
+      <footer>
+    <p>hello</p>
+   </footer>
+    <script src="{{url_for('static',filename='js/scriptAi.js')}}"></script>
 </body>
 </html>

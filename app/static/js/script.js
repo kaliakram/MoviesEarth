@@ -1,13 +1,5 @@
-async function getMovies() {
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNTllZTZiMjJkYjQ5MDc3NTgyNzY0ZDM1ZjhjYjQ2YSIsIm5iZiI6MTc1MDI4NTg1Ny40MDcsInN1YiI6IjY4NTMzZTIxZWUzZmM4ZTg1ZjBjZjA0OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Eacu25qDg7V_HmQpT0QZU6YgbObnuAXQnY-n-aKcikE'
-  }
-};
-
-fetch('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options)
+async function getMovies(url) {
+fetch(url)
   .then(res => res.json())
   .then(res => {
 	const bigClass=document.getElementById("movies");
@@ -48,7 +40,7 @@ function type(string,element){
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
-    getMovies();
+    getMovies(url);
 	let animateString='Welcome to MoviesEarth- Your Best Source For Exploring Movies !';
 	let element=document.querySelector("h1");
 	type(animateString,element);
@@ -71,7 +63,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 			})
 
 	exit.addEventListener("click",()=>{
-			let loading=document.getElementById("loadingCircle");
 			popover_content.style.display="block";
 			popover_container.style.display="none";
 	})

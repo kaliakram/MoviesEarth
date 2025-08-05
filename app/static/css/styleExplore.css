@@ -144,7 +144,6 @@ a{
     border-radius: 3px;
     display: flex;
     flex-direction: column;
-    animation-iteration-count: infinite;
     margin: 1vh;
     width: 20vh;
     height: 35vh;
@@ -153,7 +152,6 @@ a{
 .movie{
     animation-name: slowShow;
     position: relative;
-    position:relative;
     animation-duration: 1200ms;
     border: 2px solid rgba(255, 255, 255, 0.411);
     border-radius: 9px;
@@ -195,6 +193,26 @@ h1,h2{
 }
 h2{
     font-size: 5vh;
+}
+#next-previous{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1vh;
+    margin-bottom: 3vh;
+}
+#next-previous>*{
+    border: 3px solid white;
+    background: linear-gradient(130deg,black,rgb(62, 0, 62));
+    height: 5vh;
+    width: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+#previous,#next{
+    height: 3vh;
 }
 @keyframes loadingMovies{
     0%{
