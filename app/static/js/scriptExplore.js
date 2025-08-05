@@ -1,15 +1,8 @@
-async function getMovies() {
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNTllZTZiMjJkYjQ5MDc3NTgyNzY0ZDM1ZjhjYjQ2YSIsIm5iZiI6MTc1MDI4NTg1Ny40MDcsInN1YiI6IjY4NTMzZTIxZWUzZmM4ZTg1ZjBjZjA0OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Eacu25qDg7V_HmQpT0QZU6YgbObnuAXQnY-n-aKcikE'
-  }
-};
-
-fetch('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc&page=500', options)
+        async function getMovies() {
+fetch("{{url_for('get_movies',pages=page)}}")
   .then(res => res.json())
   .then(res => {
+    const forbidden=['Pleasure','Des jours plus belles que la nuit','Intimacy','After'];
 	const bigClass=document.getElementById("movies");
 	bigClass.innerHTML="";
 	for(i=0;i<20;i++){
@@ -21,15 +14,15 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_vi
 		let newImagePath=`https://image.tmdb.org/t/p/original/${element.poster_path}`;
 		newElement.className="movie";
 		newElement.imagePath=`https://image.tmdb.org/t/p/original/${element.poster_path}`;
-		newElement.originalLang=element.original_language;
 		newElement.overview=element.overview;
-		newElement.releaseDate=element.release_date;
 		newTitle.innerHTML=element.original_title;
+        if(!(forbidden.includes(element.original_title))){
 		newElement.style.backgroundImage=`url("${newImagePath}")`;
 		newElement.style.backgroundSize="cover";
 		newElement.appendChild(newTitle);
 		newElement.appendChild(newOverlay);
 		bigClass.appendChild(newElement);
+        }
 
 };
   })
