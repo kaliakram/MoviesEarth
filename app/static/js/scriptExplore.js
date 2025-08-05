@@ -7,12 +7,12 @@ const options = {
   }
 };
 
-fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options)
+fetch('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc&page=500', options)
   .then(res => res.json())
   .then(res => {
 	const bigClass=document.getElementById("movies");
 	bigClass.innerHTML="";
-	for(i=0;i<200;i++){
+	for(i=0;i<20;i++){
 		let element=res.results[i];
 		let newElement=document.createElement("div");
 		let newTitle=document.createElement("p");
@@ -47,9 +47,34 @@ function type(string,element){
     }
     writechar();
 }
+
 document.addEventListener("DOMContentLoaded",()=>{
     getMovies();
     let string='Explore Movies';
     let element=document.querySelector("h2");
     type(string,element);
+	let movies=document.getElementById("movies");
+	let popover_container=document.getElementById("popover-container");
+	let popover=document.getElementById("popover");
+	let popover_content=document.getElementById("popover-content");
+	let exit=document.getElementById("exit");
+	movies.addEventListener("click",(event)=>{
+		let movie=event.target.closest(".movie");
+		console.log(movie);
+		if(!movie || !movies.contains(movie)) return;
+			popover_container.style.display="block";
+			document.getElementById("title").innerHTML=movie.children[0].innerHTML;
+			document.querySelector("#overview").innerHTML="";
+			let overview=document.getElementById("overview");
+			document.getElementById("poster").src=movie.imagePath;
+			document.getElementById("loadingCircle").style.display="none";
+			overview.innerHTML=movie.overview;
+			})
+
+	exit.addEventListener("click",()=>{
+			let loading=document.getElementById("loadingCircle");
+			popover_content.style.display="block";
+			popover_container.style.display="none";
+	})
+
 })

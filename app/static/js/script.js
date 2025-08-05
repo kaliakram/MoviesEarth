@@ -7,7 +7,7 @@ const options = {
   }
 };
 
-fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options)
+fetch('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options)
   .then(res => res.json())
   .then(res => {
 	const bigClass=document.getElementById("movies");
@@ -18,14 +18,13 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
 		let newTitle=document.createElement("p");
 		let newOverlay=document.createElement("div");
 		newOverlay.className="movieOverlay";
-		let newImagePath=`https://image.tmdb.org/t/p/original/${element.poster_path}`;
 		newElement.className="movie";
 		newElement.imagePath=`https://image.tmdb.org/t/p/original/${element.poster_path}`;
 		newElement.originalLang=element.original_language;
 		newElement.overview=element.overview;
 		newElement.releaseDate=element.release_date;
 		newTitle.innerHTML=element.original_title;
-		newElement.style.backgroundImage=`url("${newImagePath}")`;
+		newElement.style.backgroundImage=`url("https://image.tmdb.org/t/p/original/${element.poster_path}")`;
 		newElement.style.backgroundSize="cover";
 		newElement.appendChild(newTitle);
 		newElement.appendChild(newOverlay);

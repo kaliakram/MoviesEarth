@@ -1,2 +1,7 @@
 *.ipynb
 *.ipynb
+.env
+/.virtual
+/__pycache__
+/.vscode
+*.py[cod]
