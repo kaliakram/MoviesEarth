@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{url_for('static',filename='imgs/icon.png')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
+    <title>{% block title %}
+        default
+        {% endblock %}</title>
+    {% block extra_style %}
+    {% endblock %}
+    {% block extra_script%}
+    {% endblock %}
+
+</head>
+<body>
+    <header>
+        <a href="{{url_for('home')}}"> <img src="{{url_for('static',filename='imgs/logo.png')}}" alt="Logo" id="logo"></a>
+        <ul id="navbar">
+            <li> <a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('explore_movies',page=1)}}">Explore</a></li>
+            <li><a href="{{url_for('ai_movie_recommendation')}}">AI Recommendation</a></li>
+            <li><a href="{{url_for('about')}}">About Us</a></li>
+        </ul>
+
+    </header>
+    <div id="popover-container">
+        <div id="popover">
+            <div id="popover-content">
+                <img src="imgs/exit.png" alt="exit" id="exit">
+                <div id="loadingCircle">
+                </div>
+                <div id="newcontent">
+                    <h3 id="title" style="font-size: 2.5em;text-align: center;"></h3>
+                    <img src="#" alt="poster" id="poster" style="height: 32vh; width:20vh;border: 2px solid rgb(165, 0, 113); border-radius: 10px;">
+                    <p id="overview"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block body%}
+    {% endblock%}
+<footer>
+    <p>hello</p>
+   </footer>
+{% block script %}
+{% endblock %}
+</body>
+</html>
