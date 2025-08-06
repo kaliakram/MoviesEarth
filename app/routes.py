@@ -51,9 +51,9 @@ def register_routes(app):
         genres=request.json.get("genres",[])
         movies=request.json.get('movies',[])
         if genres==[]:
-            genres="[users hadnt chose any genres]"
+            genres="[users didnt choose any genres]"
         if movies==[]:
-            movies='[user hadnt chose any preffered movies]'
+            movies='[user didnt choose any preffered movies]'
         prompt = (
         f"Given the user's preferences:\n"
         f"- Preferred genres: {genres}\n"
