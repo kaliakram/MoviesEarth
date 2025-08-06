@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     typer();
     let genres=[];
     let suggmovies=[];
-    let button=document.getElementById("button");
+    let button=document.getElementById("buttonn");
     let popovercont=document.getElementById("popover-container");
     let exitIcon=document.getElementById("exit");
     let genres_wrapper=document.getElementById("chose-from");

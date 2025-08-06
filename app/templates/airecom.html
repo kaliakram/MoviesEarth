@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
+{% block title %} MoviesEarth - Ai Movie Recommendation {% endblock %}
+    {% block extra_style %}
     <link rel="stylesheet" href="{{url_for('static',filename='css/styleAi.css')}}">
-    <link rel="icon" href="{{url_for('static',filename='imgs/icon.png')}}">
-    <title>MoviesEarth - Ai Movie Recommendation</title>
     <style>
-        #action{
+              #action{
     background-image: url("{{url_for('static',filename='imgs/genres/action.jpg')}}");
     background-size: cover;
 }
@@ -134,32 +130,15 @@
             background-position: center;
         }
     </style>
-    <script>
+    {% endblock %}
+    {% block extra_script%}
+        <script>
         let url="{{url_for('get_recommendation')}}";
     </script>
-</head>
-<body>
-      <header>
-        <a href="{{url_for('home')}}"> <img src="{{url_for('static',filename='imgs/logo.png')}}" alt="Logo" id="logo"></a>
-        <ul id="navbar">
-            <li> <a href="{{url_for('home')}}">Home</a></li>
-            <li><a href="{{url_for('explore_movies',page=1)}}">Explore</a></li>
-            <li><a href="{{url_for('ai_movie_recommendation')}}">AI Recommendation</a></li>
-            <li><a href="{{url_for('about')}}">About Us</a></li>
-        </ul>
+    {% endblock %}
 
-    </header>
-    <div id="popover-container">
-        <div id="popover">
-            <div id="popover-content">
-                <img src="{{url_for('static',filename='imgs/exit.png')}}" alt="exit" id="exit">
-                <div id="loadingCircle">
-                </div>
-                <p>ai is recommending for you</p>
-            </div>
-        </div>
-    </div>
-    <h1></h1>
+{% block body%}
+     <h1></h1>
     <hr width="70%">
     <div id="recom-wrapper">
         <h2>Choose Your Preffered Categories:</h2>
@@ -286,11 +265,11 @@
 </div>
     </div>
     <div id="buttonWrapper">
-            <button id="button">Let Ai Recommend For U</button>
+            <button id="buttonn">Let Ai Recommend For U</button>
     </div>
-      <footer>
-    <p>hello</p>
-   </footer>
-    <script src="{{url_for('static',filename='js/scriptAi.js')}}"></script>
-</body>
-</html>
+    {% endblock%}
+   
+    {% block script %}
+            <script src="{{url_for('static',filename='js/scriptAi.js')}}"></script>
+
+{% endblock %}
