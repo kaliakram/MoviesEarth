@@ -1,0 +1,12 @@
+h2{
+    font-size: 7em;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+}
+#wrap{
+    height: 80%;
+    display: flex;
+    margin-bottom: 3em;
+}

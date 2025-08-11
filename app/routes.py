@@ -89,10 +89,10 @@ def register_routes(app):
         response2=requests.get(url2,headers=headers).json().get('results',[])[0]
         return jsonify(response2)
     
-    app.errorhandler(404)
-    def error404():
+    @app.errorhandler(404)
+    def error404(error):
         return render_template("error404.html")
-    app.errorhandler(429)
+    @app.errorhandler(429)
     def error429(error):
-        return jsonify(error)
+        return "Error 429 : Too Many Requests !"
     

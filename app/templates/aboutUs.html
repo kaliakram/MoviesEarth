@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoviesEarth - About Us</title>
-    <link rel="stylesheet" href="css/styleAbout.css">
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+        MoviesEarth - About
+        {% endblock %}
+    {% block extra_style %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styleAbout.css')}}"
+    {% endblock %}
+    {% block extra_script%}
+    {% endblock %}
+    {% block body%}
+    {% endblock %}
+    {% block script%}
+    {% endblock %}
