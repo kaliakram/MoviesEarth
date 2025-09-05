@@ -22,9 +22,6 @@ def register_routes(app):
     @app.route(("/ai-movie-recommendation"))
     def ai_movie_recommendation():
         return render_template("airecom.html")
-    @app.route('/about')
-    def about():
-        return render_template("aboutUs.html")
     @app.route("/explore-movies/<int:page>")
     @limiter.limit("1 per second")
     @limiter.limit("25 per minute")
