@@ -6,11 +6,11 @@ from pathlib import Path
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from openai import OpenAI
-
-env_path=Path(__file__).resolve().parent.parent
-load_dotenv(env_path)
+load_dotenv()
 def register_routes(app):
-    limiter=Limiter(get_remote_address,app=app)
+    limiter=Limiter(    key_func=get_remote_address,
+    storage_uri=os.getenv("REDIS_URL", "memory://"))
+    limiter.init_app(app)
     @app.route("/")
     def index():
         return redirect(url_for("home"))
