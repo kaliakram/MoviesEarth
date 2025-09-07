@@ -32,7 +32,7 @@ body{
     font-size: 150%;
 }
 #popover-container{
-    display: none;
+    display:none;
     background-color: rgba(0, 0, 0, 0.64);
     height: 100vh;
     width: 100vw;
@@ -201,6 +201,15 @@ h1{
     margin-bottom: 2vh;
     cursor: pointer;
 }
+.button{
+    height: 10vh;
+    width: 40vh;
+    background:linear-gradient(130deg,black,rgb(62, 0, 62)) ;
+    border-radius: 4vh;
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    cursor: pointer;
+}
 #exploreMore:hover{
     transition: all 0.2s ease-in;
     scale: 1.05;
@@ -209,6 +218,7 @@ h1{
 footer{
     margin-top: 2vh;
     display: flex;
+    padding:1em;
     border-top: 1px solid white;
     flex-wrap: wrap;
     margin: 0px;
@@ -216,6 +226,9 @@ footer{
     align-items: center;
     background:linear-gradient(to right,black,rgb(62, 0, 62))
 
+}
+#logo2{
+    width: 8em;
 }
 @keyframes animation{
     0%{

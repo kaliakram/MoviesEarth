@@ -18,7 +18,7 @@ def register_routes(app):
     @limiter.limit("1 per second")
     @limiter.limit("25 per minute")
     def home():
-        return render_template("index.htm")
+        return render_template("index.html")
     @app.route(("/ai-movie-recommendation"))
     def ai_movie_recommendation():
         return render_template("airecom.html")

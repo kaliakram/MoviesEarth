@@ -127,7 +127,20 @@ document.addEventListener("DOMContentLoaded",()=>{
             newcontent.appendChild(overview);
             document.getElementById("popover-content").appendChild(newcontent);
         })
-        .catch(error=>console.error(error));
+        .catch(error=>{
+            	let popover=document.getElementById("popover-container");
+	popover.style.display="block";
+	document.getElementById("popover-content").innerHTML="<h2>failed ai recommendation!</h2>";
+	let button=document.createElement("button");
+	button.innerHTML="Refresh";
+	button.classList.add("button");
+	button.id="reloading";
+	document.getElementById("popover-content").appendChild(button);
+		let reloading=document.getElementById("reloading");
+	reloading.addEventListener("click",()=>{
+		location.href=location.href;
+	})
+        });
 
         }
 
