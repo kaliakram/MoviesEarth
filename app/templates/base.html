@@ -42,7 +42,13 @@
     {% block body%}
     {% endblock%}
 <footer>
-    <img src="{{url_for('static',filename='imgs/logo.png')}}" id="logo2">
+    <a href="{{url_for('home')}}"><img src="{{url_for('static',filename='imgs/logo.png')}}" id="logo2" title="MoviesEarth"></a>
+        <a href="https://github.com/kaliakram/MoviesEarth" target="_blank">
+            <div id="github" title="MoviesEarth Repo">
+        <img src="{{url_for('static',filename='imgs/github.png')}}" id="githubic">
+        <p id="hell">MoviesEarth Repo</p>
+    </div>
+        </a>
    </footer>
 {% block script %}
 {% endblock %}

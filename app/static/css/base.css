@@ -230,6 +230,29 @@ footer{
 #logo2{
     width: 8em;
 }
+#github{
+    display: flex;
+    align-items: center;
+}
+#githubic{
+    width: 2em;
+    height: 2em;
+}
+#github:hover{
+    transition: all 0.2s ease-in-out;
+    scale: 1.05;
+    cursor: pointer;
+}
+#logo2:hover{
+    transition: all 0.2s ease-in-out;
+    scale: 1.05;
+    cursor: pointer;
+}
+@media screen and (max-width:520px) {
+    #hell{
+        display: none;
+    }
+}
 @keyframes animation{
     0%{
         background-color: rgb(255, 255, 255);
