@@ -8,8 +8,8 @@ from flask_limiter.util import get_remote_address
 from openai import OpenAI
 load_dotenv()
 def register_routes(app):
-    limiter=Limiter(    key_func=get_remote_address,
-    storage_uri=os.getenv("REDIS_URL", "memory://"))
+    limiter=Limiter(    key_func=get_remote_address,)
+    # storage_uri=os.getenv("REDIS_URL", "memory://"))
     limiter.init_app(app)
     @app.route("/")
     def index():

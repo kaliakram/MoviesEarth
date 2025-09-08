@@ -6,8 +6,8 @@ li:nth-of-type(2){
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    padding-right:2.7em ;
-    padding-left:2.7em ;
+    padding-right:2em ;
+    padding-left:2em ;
     margin-bottom: 2em;
 }
 h2{
