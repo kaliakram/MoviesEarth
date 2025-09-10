@@ -29,7 +29,7 @@ body{
     text-align: center;
 }
 #newcontent>h3{
-    font-size: 150%;
+    font-size: 3em;
 }
 #popover-container{
     display:none;
@@ -44,16 +44,13 @@ body{
 #popover{
     background:linear-gradient(to right,rgb(21, 0, 15),rgb(51, 0, 51));
     margin: auto;
-    min-height: 35em;
-    min-width: 20em;
-    max-height: 30em;
     margin-top: 12vh;
-    height: 25vw;
-    width: 25vw;
+    height: 35em;
+    width: 25em;
     display: flex;
     border-radius: 10px;
     transition: all 0.6s ease-out;
-    border: 1px solid white;
+    border: 2px solid white;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -101,7 +98,7 @@ header{
     margin: 0px;
     justify-content: space-around;
     align-items: center;
-    background:linear-gradient(to right,black,rgb(62, 0, 62));
+    background:linear-gradient(to right,black,rgb(48, 0, 48));
 }
 #navbar{
     list-style: none;
@@ -122,6 +119,7 @@ a{
     background-position:bottom;
     border-bottom: 0.5px solid white;
     margin-bottom: 2vh;
+    padding: 2em;
 }
 #explorerwrapper{
     padding-top: 2vh;
@@ -218,25 +216,24 @@ h1{
 footer{
     margin-top: 2vh;
     display: flex;
-    padding:1em;
+    padding:0.3em;
     border-top: 1px solid white;
     flex-wrap: wrap;
     margin: 0px;
     justify-content: space-around;
     align-items: center;
-    background:linear-gradient(to right,black,rgb(62, 0, 62))
-
+    background:linear-gradient(to right,black,rgb(62, 0, 62));
 }
 #logo2{
-    width: 8em;
+    width: 5em;
 }
 #github{
     display: flex;
     align-items: center;
 }
 #githubic{
-    width: 2em;
-    height: 2em;
+    width: 1em;
+    height: 1em;
 }
 #github:hover{
     transition: all 0.2s ease-in-out;
@@ -252,6 +249,19 @@ footer{
     #hell{
         display: none;
     }
+}
+@media screen and (max-width:500px){
+    #popover{
+        height: 75vh;
+        width: 75vw;
+        padding: 1vh;
+        border-left: 2px solid white;
+    }
+    .movie{
+        height:28vh ;
+        width: 17vh;
+    }
+
 }
 @keyframes animation{
     0%{
@@ -296,5 +306,16 @@ footer{
     100%{
         transform: rotate(360deg);
 
+    }
+}
+@keyframes glow{
+    0%{
+        background-position: left;
+    }
+    50%{
+        background-position: right;
+    }
+    100%{
+        background-position: left;
     }
 }

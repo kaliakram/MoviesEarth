@@ -10,7 +10,10 @@ from openai import OpenAI
 env_path=Path(__file__).resolve().parent.parent
 load_dotenv(env_path)
 def register_routes(app):
-    limiter=Limiter(get_remote_address,app=app)
+    REDIS_URL=os.getenv("REDIS_URL","memory://")
+    limiter=Limiter(    key_func=get_remote_address,
+    storage_uri=REDIS_URL,)
+    limiter.init_app(app)
     @app.route("/")
     def index():
         return redirect(url_for("home"))
