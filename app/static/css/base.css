@@ -44,16 +44,13 @@ body{
 #popover{
     background:linear-gradient(to right,rgb(21, 0, 15),rgb(51, 0, 51));
     margin: auto;
-    min-height: 35em;
-    min-width: 20em;
-    max-height: 30em;
     margin-top: 12vh;
-    height: 25vw;
-    width: 25vw;
+    height: 65vh;
+    width: 40vw;
     display: flex;
     border-radius: 10px;
     transition: all 0.6s ease-out;
-    border: 1px solid white;
+    border: 2px solid white;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -113,6 +110,7 @@ header{
 a{
     text-decoration: none;
     font-size: 2.2vh;
+    white-space: nowrap;
 }
 #hero{
     height: 50vh;
@@ -121,6 +119,7 @@ a{
     background-image: url(../imgs/herobackground.png);
     background-position:bottom;
     border-bottom: 0.5px solid white;
+    padding: 1.5em;
     margin-bottom: 2vh;
 }
 #explorerwrapper{
@@ -248,9 +247,37 @@ footer{
     scale: 1.05;
     cursor: pointer;
 }
-@media screen and (max-width:520px) {
+#poster{
+    height: 32vh; 
+    width:20vh;
+    border: 2px solid rgb(165, 0, 113); 
+    border-radius: 10px;
+}
+#title{
+    font-size: 2.5em;
+}
+@media screen and (max-width:500px) {
     #hell{
         display: none;
+    }
+    .moviebefore{
+        width: 14vh;
+        height: 25vh;
+    }  
+      .movie{
+        width: 14vh;
+        height: 25vh;
+    }
+
+    #title{
+        font-size: 1.5em;
+    }
+}
+@media screen and (max-width:1000px){
+    #popover{
+        height: 75vh;
+        width: 50vw;
+        bottom: 2em;
     }
 }
 @keyframes animation{

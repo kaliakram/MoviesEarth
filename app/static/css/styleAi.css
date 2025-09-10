@@ -23,8 +23,8 @@ h1{
     flex-direction: column;
     align-items: center;
     gap: 2em;
-    margin:2em;
-    padding: 2em;
+    margin:1.5em;
+    padding: 1.5em;
     margin-top: 1em;
     backdrop-filter: blur(5px);
 }
@@ -124,4 +124,14 @@ h1{
 }
 .suggOverlay.select{
     background-color: rgba(0, 128, 0, 0.628);
+}
+@media screen and (max-width:440px) {
+    .genre{
+        height:5vh;
+    width: 8vh;
+    }
+    .movieSug{
+    height: 12em;
+    width: 6em;
+    }
 }
